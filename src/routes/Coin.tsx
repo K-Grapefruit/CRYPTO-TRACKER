@@ -14,6 +14,16 @@ import { fetchCoinInfo, fetchCoinTickers } from "./api";
 import Chart from "./Chart";
 import Price from "./Price";
 
+const Backbtn = styled.button`
+  position: absolute;
+  top: 50px;
+  background: transparent;
+  border: none;
+  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.accentColor};
+  padding: 20px;
+`;
+
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
@@ -209,6 +219,9 @@ function Coin({}: ICoinProps) {
         <Loader>Loading...</Loader>
       ) : (
         <>
+          <Backbtn>
+            <Link to={"/"}>←</Link>
+          </Backbtn>
           <Overview>
             <OverviewItem>
               <span>Rank:</span>
