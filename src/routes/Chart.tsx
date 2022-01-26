@@ -30,49 +30,42 @@ function Chart({ coinId }: CharProps) {
         "Loading chart...."
       ) : (
         <ApexChart
-          type="line"
+          type="candlestick"
           series={[
             {
               name: "Price",
-              data: data?.map((price) => price.close),
+              data: data?.map((price) => ({
+                x: price.time_close,
+                y: [price.open, price.high, price.low, price.close],
+              })),
             },
           ]}
           options={{
             theme: { mode: isDark ? "dark" : "light" },
             chart: {
+              type: "candlestick",
               height: 500,
               width: 500,
-              toolbar: {
-                show: false,
-              },
+
               background: "transparent",
+              animations: {
+                enabled: true,
+                easing: "easeinout",
+                speed: 800,
+                animateGradually: {
+                  enabled: true,
+                  delay: 150,
+                },
+                dynamicAnimation: {
+                  enabled: true,
+                  speed: 350,
+                },
+              },
             },
-            grid: { show: false },
-            stroke: {
-              curve: "smooth",
-              width: 5,
-            },
+
             yaxis: { show: false },
             xaxis: {
               type: "datetime",
-              categories: data?.map((price) => price.time_close),
-              labels: { show: false },
-              axisTicks: {
-                show: true,
-              },
-              axisBorder: {
-                show: false,
-              },
-            },
-            fill: {
-              type: "gradient",
-              gradient: { gradientToColors: ["#0be881"], stops: [0, 100] },
-            },
-            colors: ["#0fbcf9"],
-            tooltip: {
-              y: {
-                formatter: (value) => `${value.toFixed(2)}`,
-              },
             },
           }}
         />
