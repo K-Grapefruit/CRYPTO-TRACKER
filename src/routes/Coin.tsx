@@ -220,7 +220,7 @@ function Coin({}: ICoinProps) {
       ) : (
         <>
           <Backbtn>
-            <Link to={"/"}>←</Link>
+            <Link to={"/CRYPTO-TRACKER"}>←</Link>
           </Backbtn>
           <Overview>
             <OverviewItem>
