@@ -89,11 +89,12 @@ function Coins() {
   //     SetLoading(false);
   //   })();
   // }, []);
+  console.log(data);
   return (
     <Container>
-      <Helmet>
+      {/* <Helmet>
         <title>Coin</title>
-      </Helmet>
+      </Helmet> */}
       <Header>
         <Title>Coin</Title>
         <SwitchTheme onClick={toggleDarkAtom}>
